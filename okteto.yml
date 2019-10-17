@@ -3,7 +3,6 @@ image: okteto/golang:1
 workdir: /okteto
 command: ["bash"]
 volumes:
-  - /go
   - /root/.cache/go-build/
 securityContext:
   capabilities:

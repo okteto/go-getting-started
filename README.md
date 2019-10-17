@@ -1,88 +1,153 @@
-# Develop Go Applications directly in Kubernetes with Okteto
+# Getting Started on Okteto with Golang
 
-This example shows how to leverage [Okteto](https://github.com/okteto/okteto) to develop a Go Sample App directly in Kubernetes. 
+This example shows how to leverage [Okteto](https://github.com/okteto/okteto) to develop a Golang Sample App directly in Kubernetes. The Golang Sample App is deployed using raw Kubernetes manifests.
 
-Okteto works in any Kubernetes cluster by reading your local Kubernetes credentials. For a more empowered experience, follow this [guide](https://okteto.com/docs/samples/golang/) to deploy the Go Sample App in [Okteto Cloud](https://cloud.okteto.com), a free Kubernetes cluster for developers.
+Okteto works in any Kubernetes cluster by reading your local kubeconfig file. If you need access to a Kubernetes cluster, [Okteto Cloud](https://cloud.okteto.com) gives you free access to secure Kubernetes namespaces, compatible with any Kubernetes tool.
 
-## Step 1: Install the Okteto CLI
+## Step 1: Deploy the Go Sample App
 
-Install the Okteto CLI by following our [installation guides](https://github.com/okteto/okteto/blob/master/docs/installation.md).
-
-## Step 2: Deploy the Go Sample App
-
-Get a local version of the Go Sample App by executing the following commands in your local terminal:
+Get a local version of the Go Sample App by executing the following commands:
 
 ```console
 $ git clone https://github.com/okteto/go-getting-started
 ```
 
-In the `manifest/` directory you have the Kubernetes manifests that we will use in this guide to deploy the application in the cluster. Okteto works with any Kubernetes tool or deployment practice.
-
-> If you don't have `kubectl` installed, follow this [guide](https://kubernetes.io/docs/tasks/tools/install-kubectl/).
-
-Deploy the Go Sample App by executing:
+The `k8s.yml` file contains the raw Kubernetes manifests to deploy the Golang Sample App. Run the application by executing:
 
 ```console
 $ kubectl apply -f manifests
+```
+
+```console
 deployment.apps "hello-world" created
 service "hello-world" created
 ```
 
-## Step 3: Create your Okteto Environment
+This is cool! You typed one command and a dev version of your application just runs 😎. 
 
-With the app deployed, you can start your Okteto Environment by running the following command:
+## Step 2: Start your development environment in Kubernetes
+
+With the Golang Sample Application deployed, run the following command:
 
 ```console
 $ okteto up
- ✓  Okteto Environment activated
+ ✓  Development environment activated
  ✓  Files synchronized
- ✓  Your Okteto Environment is ready
-    Namespace: cindy
+    Namespace: pchico83
     Name:      hello-world
     Forward:   8080 -> 8080
+               2345 -> 2345
 
 okteto>
 ```
 
-The `okteto up` command will automatically start an Okteto Environment, which means:
+The `okteto up` command starts a [Kubernetes development environment](https://okteto.com/docs/reference/development-environment/index.html), which means:
 
 - The Go Sample App container is updated with the docker image `okteto/golang:1`. This image contains the required dev tools to build, test and run the Go Sample App.
-- A bidirectional file synchronization service is started to keep your changes up to date between your local filesystem and your Okteto Environment.
+- A [file synchronization service](https://okteto.com/docs/reference/file-synchronization/index.html) is created to keep your changes up-to-date between your local filesystem and your application pods.
+- Attach a volume to persist the Golang cache in your Kubernetes development environment.
+- Container ports 8080 (the application) and 2345 (the debugger) are forwarded to localhost.
+- You have a remote shell in the development environment. Build, test and run your application as if you were in your local machine.
 
-Once the Okteto Environment is ready, start your application by executing the following command in your Okteto Terminal:
+> All of this (and more) can be customized via the `okteto.yml` [manifest file](https://okteto.com/docs/reference/manifest/index.html).
+
+
+To run the application, execute in the remote shell:
 
 ```console
 okteto> go run main.go
 Starting hello-world server...
 ```
 
-You can now access the Go Sample App at http://localhost:8080.
+Test your application by running the command below in a local shell:
 
-## Step 4: Develop directly in the cloud
+```console
+$ curl localhost:8080
+```
 
-Now things get more exciting. Edit the file `main.go` and replace the word `cluster` with `Okteto` on line 23. Save your changes.
+```console
+Hello world REST API!
+```
 
-Cancel the execution of `go run main.go` from your Okteto Terminal by pressing `ctrl + c`. Now rerun your application:
+## Step 3: Develop directly in Kubernetes
+
+Opem the file `main.go` in your favorite local IDE and modify the response message on line 17 to be *Hello world REST API from the cluster!*. Save your changes.
+
+```golang
+func helloServer(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprint(w, "Hello world REST API from the cluster!")
+}
+```
+
+Okteto will synchronize your changes to your development environnment in Kubernetes. Cancel the execution of `go run main.go` from the remote shell by pressing `ctrl + c`. Rerun your application:
 
 ```console
 okteto> go run main.go
+Starting hello-world server...
 ```
 
-Go back to the browser and reload the page. Notice how your changes are instantly applied. No commit, build or push required 😎! 
+Call your application from a local shell to validate the changes:
 
+```console
+$ curl localhost:8080
+```
+
+```console
+Hello world REST API from the cluster!
+```
+
+Cool! Your code changes were instantly applied to Kubernetes. No commit, build or push required 😎!
+
+## Step 4: Debug directly in Kubernetes
+
+Okteto enables you to debug your applications directly from your favorite IDE. Let's take a look at how that works in VS Code, one of the most popular IDEs for Golang development.
+
+Cancel the execution of `go run main.go` from the remote shell by pressing `ctrl + c`. Rerun your application in debug mode:
+
+```console
+okteto> dlv debug --headless --listen=:2345 --log --api-version=2
+API server listening at: [::]:2345
+2019-10-17T14:39:24Z info layer=debugger launching process with args: [/okteto/__debug_bin]
+```
+
+Open the _Debug_ extension and run the *Connect to okteto* launch configuration:
+
+```json
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Connect to okteto",
+            "type": "go",
+            "request": "attach",
+            "mode": "remote",
+            "remotePath": "/okteto",
+            "port": 2345,
+            "host": "127.0.0.1"
+        }
+    ]
+}
+```
+
+ Add a breakpoint on `main.go`, line 17, and call your application by running the command below from a local shell.
+
+```console
+$ curl localhost:8080
+```
+
+The execution will halt at your breakpoint. You can then inspect the request, the available variables, etc...
 
 ## Step 5: Cleanup
 
-Cancel the `okteto up` command by pressing `ctrl + c` + `exit` and run the following commands to remove the resources created by this guide: 
+Cancel the `okteto up` command by pressing `ctrl + c` + `ctrl + d` and run the following commands to remove the resources created by this guide: 
 
 ```console
-$ okteto down -v
- ✓  Okteto Environment deactivated
- 
+$ okteto down
+ ✓  Development environment deactivated
 ```
 
 ```console
-$ kubectl delete -f manifests
+$ kubectl delete -f k8s.yml
 deployment.apps "hello-world" deleted
 service "hello-world" deleted
 ```
