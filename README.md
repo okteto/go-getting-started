@@ -15,7 +15,7 @@ $ git clone https://github.com/okteto/go-getting-started
 The `k8s.yml` file contains the raw Kubernetes manifests to deploy the Golang Sample App. Run the application by executing:
 
 ```console
-$ kubectl apply -f manifests
+$ kubectl apply -f k8s.yml
 ```
 
 ```console
