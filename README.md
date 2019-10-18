@@ -66,16 +66,16 @@ $ curl localhost:8080
 ```
 
 ```console
-Hello world REST API!
+Hello world!
 ```
 
 ## Step 3: Develop directly in Kubernetes
 
-Opem the file `main.go` in your favorite local IDE and modify the response message on line 17 to be *Hello world REST API from the cluster!*. Save your changes.
+Opem the file `main.go` in your favorite local IDE and modify the response message on line 17 to be *Hello world from the cluster!*. Save your changes.
 
 ```golang
 func helloServer(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, "Hello world REST API from the cluster!")
+	fmt.Fprint(w, "Hello world from the cluster!")
 }
 ```
 
@@ -93,7 +93,7 @@ $ curl localhost:8080
 ```
 
 ```console
-Hello world REST API from the cluster!
+Hello world from the cluster!
 ```
 
 Cool! Your code changes were instantly applied to Kubernetes. No commit, build or push required 😎!
