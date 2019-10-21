@@ -1,6 +1,6 @@
-# Getting Started on Okteto with Golang
+# Getting Started on Okteto with Go
 
-This example shows how to leverage [Okteto](https://github.com/okteto/okteto) to develop a Golang Sample App directly in Kubernetes. The Golang Sample App is deployed using raw Kubernetes manifests.
+This example shows how to leverage [Okteto](https://github.com/okteto/okteto) to develop a Go Sample App directly in Kubernetes. The Go Sample App is deployed using raw Kubernetes manifests.
 
 Okteto works in any Kubernetes cluster by reading your local kubeconfig file. If you need access to a Kubernetes cluster, [Okteto Cloud](https://cloud.okteto.com) gives you free access to secure Kubernetes namespaces, compatible with any Kubernetes tool.
 
@@ -12,7 +12,7 @@ Get a local version of the Go Sample App by executing the following commands:
 $ git clone https://github.com/okteto/go-getting-started
 ```
 
-The `k8s.yml` file contains the raw Kubernetes manifests to deploy the Golang Sample App. Run the application by executing:
+The `k8s.yml` file contains the raw Kubernetes manifests to deploy the Go Sample App. Run the application by executing:
 
 ```console
 $ kubectl apply -f k8s.yml
@@ -27,7 +27,7 @@ This is cool! You typed one command and a dev version of your application just r
 
 ## Step 2: Start your development environment in Kubernetes
 
-With the Golang Sample Application deployed, run the following command:
+With the Go Sample Application deployed, run the following command:
 
 ```console
 $ okteto up
@@ -45,9 +45,9 @@ The `okteto up` command starts a [Kubernetes development environment](https://ok
 
 - The Go Sample App container is updated with the docker image `okteto/golang:1`. This image contains the required dev tools to build, test and run the Go Sample App.
 - A [file synchronization service](https://okteto.com/docs/reference/file-synchronization/index.html) is created to keep your changes up-to-date between your local filesystem and your application pods.
-- Attach a volume to persist the Golang cache in your Kubernetes development environment.
+- Attach a volume to persist the Go cache and packages in your Kubernetes development environment.
 - Container ports 8080 (the application) and 2345 (the debugger) are forwarded to localhost.
-- You have a remote shell in the development environment. Build, test and run your application as if you were in your local machine.
+- A remote shell is started in your Kubernetes development environment. Build, test and run your application as if you were in your local machine.
 
 > All of this (and more) can be customized via the `okteto.yml` [manifest file](https://okteto.com/docs/reference/manifest/index.html).
 
@@ -71,7 +71,7 @@ Hello world!
 
 ## Step 3: Develop directly in Kubernetes
 
-Opem the file `main.go` in your favorite local IDE and modify the response message on line 17 to be *Hello world from the cluster!*. Save your changes.
+Opem the `main.go` file in your favorite local IDE and modify the response message on line 17 to be *Hello world from the cluster!*. Save your changes.
 
 ```golang
 func helloServer(w http.ResponseWriter, r *http.Request) {
