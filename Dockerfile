@@ -2,7 +2,7 @@ FROM golang:alpine as builder
 RUN apk --update add --no-cache bash
 WORKDIR /app
 ADD . .
-RUN go build
+RUN go build -o app
 
 FROM alpine as prod
 WORKDIR /app
