@@ -45,7 +45,7 @@ The `okteto up` command starts a [Kubernetes development environment](https://ok
 
 - The Go Sample App container is updated with the docker image `okteto/golang:1`. This image contains the required dev tools to build, test and run the Go Sample App.
 - A [file synchronization service](https://okteto.com/docs/reference/file-synchronization/index.html) is created to keep your changes up-to-date between your local filesystem and your application pods.
-- Attach a volume to persist the Go cache and packages in your Kubernetes development environment.
+- A volume is attached to persist the Go cache and packages in your Kubernetes development environment.
 - Container ports 8080 (the application) and 2345 (the debugger) are forwarded to localhost.
 - A remote shell is started in your Kubernetes development environment. Build, test and run your application as if you were in your local machine.
 
@@ -56,6 +56,9 @@ To run the application, execute in the remote shell:
 
 ```console
 okteto> go run main.go
+```
+
+```console
 Starting hello-world server...
 ```
 
@@ -83,6 +86,9 @@ Okteto will synchronize your changes to your development environnment in Kuberne
 
 ```console
 okteto> go run main.go
+```
+
+```console
 Starting hello-world server...
 ```
 
@@ -106,6 +112,9 @@ Cancel the execution of `go run main.go` from the remote shell by pressing `ctrl
 
 ```console
 okteto> dlv debug --headless --listen=:2345 --log --api-version=2
+```
+
+```console
 API server listening at: [::]:2345
 2019-10-17T14:39:24Z info layer=debugger launching process with args: [/okteto/__debug_bin]
 ```
@@ -143,11 +152,17 @@ Cancel the `okteto up` command by pressing `ctrl + c` + `ctrl + d` and run the f
 
 ```console
 $ okteto down
+```
+
+```console
  ✓  Development environment deactivated
 ```
 
 ```console
 $ kubectl delete -f k8s.yml
+```
+
+```console
 deployment.apps "hello-world" deleted
 service "hello-world" deleted
 ```
