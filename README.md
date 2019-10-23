@@ -74,7 +74,7 @@ Hello world!
 
 ## Step 3: Develop directly in Kubernetes
 
-Opem the `main.go` file in your favorite local IDE and modify the response message on line 17 to be *Hello world from the cluster!*. Save your changes.
+Open the `main.go` file in your favorite local IDE and modify the response message on line 17 to be *Hello world from the cluster!*. Save your changes.
 
 ```golang
 func helloServer(w http.ResponseWriter, r *http.Request) {
@@ -82,7 +82,7 @@ func helloServer(w http.ResponseWriter, r *http.Request) {
 }
 ```
 
-Okteto will synchronize your changes to your development environnment in Kubernetes. Cancel the execution of `go run main.go` from the remote shell by pressing `ctrl + c`. Rerun your application:
+Okteto will synchronize your changes to your development environment in Kubernetes. Cancel the execution of `go run main.go` from the remote shell by pressing `ctrl + c`. Rerun your application:
 
 ```console
 okteto> go run main.go
