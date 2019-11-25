@@ -1,33 +1,37 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hello-world
+  name: ubuntu-vnc-xfce-firefox-plus
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: hello-world
+      app: ubuntu-vnc-xfce-firefox-plus
   template:
     metadata:
       labels:
-        app: hello-world
+        app: ubuntu-vnc-xfce-firefox-plus
     spec:
       containers:
-      - image: okteto/hello-world:golang
+      - image: accetto/ubuntu-vnc-xfce-firefox-plus:latest
         name: hello-world
-
+        resources:
+          limits:
+            memory: 7Gi
+          requests:
+            memory: 7Gi
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: hello-world
+  name: ubuntu-vnc-xfce-firefox-plus
   annotations:
     dev.okteto.com/auto-ingress: "true"
 spec:
   type: ClusterIP  
   ports:
-  - name: "hello-world"
-    port: 8080
+  - name: "ubuntu-vnc-xfce-firefox-plus"
+    port: 6901
   selector:
-    app: hello-world
+    app: ubuntu-vnc-xfce-firefox-plus
