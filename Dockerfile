@@ -1,5 +1,5 @@
 FROM golang:alpine as builder
-RUN apk --update add --no-cache bash
+RUN apk --update --no-cache add bash
 WORKDIR /app
 ADD . .
 RUN go build -o app
