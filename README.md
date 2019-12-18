@@ -122,7 +122,7 @@ API server listening at: [::]:2345
 2019-10-17T14:39:24Z info layer=debugger launching process with args: [/okteto/__debug_bin]
 ```
 
-Open the _Debug_ extension and run the *Connect to okteto* launch configuration:
+Open the _Debug_ extension and run the *Connect to okteto* debug configuration (or press the F5 shortcut):
 
 ```json
 {
