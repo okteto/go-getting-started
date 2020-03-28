@@ -8,4 +8,4 @@ debug:
 
 .PHONY: push
 push:
-	okteto build -t okteto/hello-world:golang .
+	okteto build -t okteto/hello-world:go .
