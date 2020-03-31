@@ -13,7 +13,7 @@ spec:
         app: hello-world
     spec:
       containers:
-      - image: okteto/hello-world:go
+      - image: okteto/hello-world:golang
         name: hello-world
 
 ---

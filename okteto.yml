@@ -1,10 +1,7 @@
 name: hello-world
-image: okteto/golang:1
-workdir: /okteto
+image: okteto/hello-world:golang-dev
+workdir: /app
 command: ["bash"]
-volumes:
-  - /go/pkg/
-  - /root/.cache/go-build/
 securityContext:
   capabilities:
     add:
@@ -12,3 +9,5 @@ securityContext:
 forward:
   - 8080:8080
   - 2345:2345
+persistentVolume:
+  enabled: false
