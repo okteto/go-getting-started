@@ -1,4 +1,4 @@
-FROM golang:alpine as builder
+FROM golang:buster as builder
 
 WORKDIR /app
 ADD . .
@@ -8,8 +8,6 @@ RUN go build -o app
 
 FROM builder as dev
 
-RUN apk --update --no-cache add bash
-
 COPY bashrc /root/.bashrc
 
 RUN go get github.com/codegangsta/gin && \
@@ -18,7 +16,7 @@ RUN go get github.com/codegangsta/gin && \
 
 ##########################
 
-FROM alpine as prod
+FROM debian:buster as prod
 
 WORKDIR /app
 COPY --from=builder /app/app /app/app
