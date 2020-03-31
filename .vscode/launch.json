@@ -6,7 +6,7 @@
             "type": "go",
             "request": "attach",
             "mode": "remote",
-            "remotePath": "/okteto",
+            "remotePath": "/app",
             "port": 2345,
             "host": "127.0.0.1"
         }
