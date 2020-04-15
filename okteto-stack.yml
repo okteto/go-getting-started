@@ -3,7 +3,7 @@ services:
   api:
     public: true
     image: okteto/hello-world:golang
-    build: 1
+    build: .
     ports:
       - 8080
     
