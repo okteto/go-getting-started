@@ -1,0 +1,9 @@
+name: hello-world
+services:
+  api:
+    public: true
+    image: okteto/hello-world:golang
+    build: 1
+    ports:
+      - 8080
+    
