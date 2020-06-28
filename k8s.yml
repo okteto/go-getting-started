@@ -2,6 +2,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: hello-world
+  annotations:
+    dev.okteto.com/repository: https://github.com/okteto/go-getting-started
+    dev.okteto.com/path: okteto.yml
 spec:
   replicas: 1
   selector:
