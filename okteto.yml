@@ -9,3 +9,5 @@ securityContext:
 forward:
   - 8080:8080
   - 2345:2345
+persistentVolume:
+  enabled: false
