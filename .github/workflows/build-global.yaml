@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@master
 
       - name: Build
-        uses: okteto/build@tere/add-global-flag
+        uses: okteto/build@tere/2182-add-global-flag
         with:
           file: okteto.yaml
           global: true
