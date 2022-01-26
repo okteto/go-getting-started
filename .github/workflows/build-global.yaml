@@ -1,0 +1,27 @@
+on:
+  push:
+    branches:
+      - master
+
+name: Build to Global Registry
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: okteto/context@latest
+        with:
+          token: ${{ secrets.OKTETO_TOKEN }}
+          url: ${{ secrets.OKTETO_URL }}
+
+      - name: Checkout
+        uses: actions/checkout@master
+
+      - name: Build
+        uses: okteto/build@tere/add-global-flag
+        with:
+          file: okteto.yaml
+          global: true
+        env:
+          OKTETO_GIT_COMMIT: ${{ github.sha }}
+          OKTETO_ENABLE_MANIFEST_V2: true
