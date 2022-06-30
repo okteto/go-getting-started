@@ -29,3 +29,23 @@ spec:
     port: 8080
   selector:
     app: hello-world
+    
+---
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: hello-world
+  annotations:
+    dev.okteto.com/generate-host: hello-world
+spec:
+  rules:
+  - http:
+      paths:
+      - backend:
+          service:
+            name: hello-world
+            port:
+              number: 8080
+        path: /
+        pathType: ImplementationSpecific
