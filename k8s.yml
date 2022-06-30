@@ -13,7 +13,7 @@ spec:
         app: hello-world
     spec:
       containers:
-      - image: okteto.dev/go-hello-world:1.0.0
+      - image: okteto/hello-world:golang
         name: hello-world
 
 ---
@@ -29,23 +29,3 @@ spec:
     port: 8080
   selector:
     app: hello-world
-
----
-
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: hello-world
-  annotations:
-    dev.okteto.com/generate-host: hello-world
-spec:
-  rules:
-  - http:
-      paths:
-      - backend:
-          service:
-            name: hello-world
-            port:
-              number: 8080
-        path: /
-        pathType: ImplementationSpecific
