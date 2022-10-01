@@ -1,11 +1,11 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: "go-getting-started"
+  name: "hello-world"
   description: "go-getting-started"
   annotations:
     github.com/project-slug: gianfragolo/go-getting-started
-    backstage.io/kubernetes-id: go-getting-started
+    backstage.io/kubernetes-id: hello-world
     backstage.io/kubernetes-namespace: lucamilan
 spec:
   type: service
