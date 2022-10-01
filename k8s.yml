@@ -13,6 +13,7 @@ spec:
     metadata:
       labels:
         app: hello-world
+        backstage.io/kubernetes-id: hello-world
     spec:
       containers:
       - image: okteto.dev/go-hello-world:1.0.0
