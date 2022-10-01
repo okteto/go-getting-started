@@ -1,0 +1,14 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: "go-getting-started"
+  description: "go-getting-started"
+  annotations:
+    github.com/project-slug: gianfragolo/go-getting-started
+    backstage.io/kubernetes-id: go-getting-started
+    backstage.io/kubernetes-namespace: lucamilan
+spec:
+  type: service
+  owner: group:backend-api
+  system: system:payment-checkout
+  lifecycle: experimental
