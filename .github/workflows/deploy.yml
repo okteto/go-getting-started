@@ -1,36 +1,30 @@
 on:
-  push:
-  workflow_dispatch:
+  pull_request:
+    branches:
+      - master
+
+name: deploy
 
 jobs:
-  build:
+  devflow:
     runs-on: ubuntu-latest
     steps:
-    - name: checkout
-      uses: actions/checkout@master
-    
-    - name: Login
-      uses: okteto/login@master
-      with:
-        token: ${{ secrets.OKTETO_PATOKEN }}
+      - name: checkout
+        uses: actions/checkout@master
 
-    - name: Activate Namespace
-      uses: okteto/namespace@master
-      with:
-        namespace: lucamilan
-    
-    - name: Deploy Pipeline
-      uses: okteto/pipeline@master
-      with:
-        name: lucamilan-pipeline
-    
-    - name: Sleep for 30 seconds
-      uses: jakejarvis/wait-action@v0.1.0
-      with:
-        time: '30s'
-    
-    - name: Verify
-      uses: srt32/uptime@v0.2
-      with:
-        url-to-hit: "https://hello-world-lucamilan.cloud.okteto.net/"
-        expected-statuses: "200"
+      - name: context
+        uses: okteto/context@latest
+        with:
+          token: ${{ secrets.OKTETO_PATOKEN }}
+
+      - name: "Activate Namespace"
+        uses: okteto/namespace@latest
+        with:
+          name: lucamilan
+
+      - name: "Trigger the pipeline"
+        uses: okteto/pipeline@latest
+        with:
+          name: pr-${{ github.event.number }}
+          timeout: 8m
+          skipIfExists: true
