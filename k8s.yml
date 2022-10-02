@@ -18,7 +18,13 @@ spec:
       containers:
       - image: okteto.dev/go-hello-world:1.0.0
         name: hello-world
-
+        resources:
+          limits:
+            cpu: 250m
+            memory: 128Mi
+          requests:
+            cpu: 250m
+            memory: 128Mi
 ---
 
 apiVersion: v1
