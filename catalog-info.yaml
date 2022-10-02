@@ -2,7 +2,7 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: "hello-world"
-  description: "My Simple service written in GO"
+  description: "Simple service written in GO"
   annotations:
     github.com/project-slug: gianfragolo/go-getting-started
     backstage.io/kubernetes-id: hello-world
