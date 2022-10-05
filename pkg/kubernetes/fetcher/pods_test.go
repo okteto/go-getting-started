@@ -51,7 +51,7 @@ func TestPodFetch(t *testing.T) {
 			expected:    []model.Resource{},
 		},
 		{
-			description: "pods with all multiple container status",
+			description: "pods with multiple container status",
 			pods: []v1.Pod{
 				{
 					ObjectMeta: metav1.ObjectMeta{Name: "foo", CreationTimestamp: metav1.Time{Time: aMinAgo}},

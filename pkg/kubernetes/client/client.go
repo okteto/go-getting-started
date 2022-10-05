@@ -6,14 +6,20 @@ import (
 	"path/filepath"
 
 	"k8s.io/client-go/kubernetes"
+	"k8s.io/client-go/rest"
 	"k8s.io/client-go/tools/clientcmd"
 	clientcmdapi "k8s.io/client-go/tools/clientcmd/api"
 	"k8s.io/client-go/util/homedir"
 )
 
-const (
-	oktetoCfgFile = ".okteto/context/config.json"
-)
+// GetInclusterConfig returns the config on k8s cluster
+func GetInclusterConfig() (kubernetes.Interface, error) {
+	config, err := rest.InClusterConfig()
+	if err != nil {
+		return nil, fmt.Errorf("getting client config for Kubernetes client: %w", err)
+	}
+	return kubernetes.NewForConfig(config)
+}
 
 // GetK8sRestclient returns a REST client config for API calls against the Kubernetes API for active context.
 func GetK8sRestclient() (kubernetes.Interface, error) {
@@ -32,11 +38,12 @@ func GetK8sRestclient() (kubernetes.Interface, error) {
 func getCurrentConfig() (clientcmdapi.Config, error) {
 	bytes, err := getKubeconfigBytes()
 	if err != nil {
+		return clientcmdapi.Config{}, fmt.Errorf("could not find kubeconfig: %w", err)
 
 	}
 	k8sConfig, err := clientcmd.NewClientConfigFromBytes(bytes)
 	if err != nil {
-		return *clientcmdapi.NewConfig(), err
+		return clientcmdapi.Config{}, err
 	}
 	cfg, err := k8sConfig.RawConfig()
 	return cfg, err

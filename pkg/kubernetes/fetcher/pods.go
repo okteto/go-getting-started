@@ -26,10 +26,9 @@ type podsFetcher struct {
 }
 
 func (p podsFetcher) Fetch() ([]model.Resource, error) {
-
-	// namespace should be read from current context
+	// namespace should be read from current context or user input
 	// TODO (tejal29): read namespace.
-	pods, err := p.restClient.CoreV1().Pods("").List(p.ctx, metav1.ListOptions{})
+	pods, err := p.restClient.CoreV1().Pods("default").List(p.ctx, metav1.ListOptions{})
 	if err != nil {
 		return nil, err
 	}
@@ -42,7 +41,6 @@ func (p podsFetcher) Fetch() ([]model.Resource, error) {
 			restartCnt = restartCnt + int(c.RestartCount)
 		}
 		results[i] = model.New(podKind, pod.GetName(), createdAt, restartCnt)
-
 	}
 	return results, nil
 }
