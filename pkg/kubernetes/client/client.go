@@ -2,14 +2,9 @@ package client
 
 import (
 	"fmt"
-	"os"
-	"path/filepath"
 
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/rest"
-	"k8s.io/client-go/tools/clientcmd"
-	clientcmdapi "k8s.io/client-go/tools/clientcmd/api"
-	"k8s.io/client-go/util/homedir"
 )
 
 // GetInclusterConfig returns the config on k8s cluster
@@ -21,6 +16,8 @@ func GetInclusterConfig() (kubernetes.Interface, error) {
 	return kubernetes.NewForConfig(config)
 }
 
+// Unused methods since the k8s application  is already running in the cluster
+/*
 // GetK8sRestclient returns a REST client config for API calls against the Kubernetes API for active context.
 func GetK8sRestclient() (kubernetes.Interface, error) {
 	rawConfig, err := getCurrentConfig()
@@ -59,3 +56,4 @@ func getKubeconfigBytes() ([]byte, error) {
 	}
 	return bytes, err
 }
+*/
