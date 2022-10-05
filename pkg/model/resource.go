@@ -29,6 +29,7 @@ func (r Resource) String() string {
 }
 
 func (r Resource) PrintResource() string {
+	// TODO(tejaldesai): more friendlier Since e.g. 241d ago instad of 7879h ago
 	return fmt.Sprintf("%s, %s ago, %d", r.name, time.Since(r.createdAt), r.restarts)
 }
 

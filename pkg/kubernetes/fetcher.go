@@ -13,7 +13,8 @@ type Fetcher interface {
 }
 
 func GetAll(ctx context.Context) ([]model.Resource, error) {
-	// TODO(tejaldesai): Determine if the code is run in an cluster or on a local machine.
+	// TODO(tejaldesai): Determine if the code is run in an cluster or on a VM, machine or 
+	// another remote cluster which can connect to target k8s cluster using kubeconfig.
 	k8sClient, err := client.GetInclusterConfig()
 	if err != nil {
 		return nil, err
