@@ -6,6 +6,9 @@ build:
 deploy:
   - kubectl apply -f k8s.yml
 
+destroy:
+  - this is an error
+
 dev:
   hello-world:
     image: okteto/golang:1
