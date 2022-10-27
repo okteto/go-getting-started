@@ -1,3 +1,5 @@
+name: go-getting-started
+
 build:
   hello-world:
     image: okteto.dev/go-hello-world:1.0.0
