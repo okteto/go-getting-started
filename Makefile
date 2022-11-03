@@ -1,6 +1,6 @@
 .PHONY: start
 start:
-	go run main.go
+	air main.go
 
 .PHONY: debug
 debug:

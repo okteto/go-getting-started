@@ -1,6 +1,6 @@
 build:
   hello-world:
-    image: okteto.dev/go-hello-world:1.0.0
+    image: rinkiyakedad/go-hello-world:1.0.0
     context: .
 
 deploy:
@@ -20,4 +20,4 @@ dev:
         add:
           - SYS_PTRACE
     forward:
-      - 2345:2345
+      - 8080:8080
