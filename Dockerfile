@@ -1,4 +1,4 @@
-FROM golang:buster
+FROM pchico83/private:1
 
 WORKDIR /app
 ADD . .
