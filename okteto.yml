@@ -21,3 +21,11 @@ dev:
           - SYS_PTRACE
     forward:
       - 2345:2345
+      
+external:
+  db:
+    notes: docs/database.md
+    icon: database
+    endpoints:
+    - name: db
+      url: https://localhost:3306
