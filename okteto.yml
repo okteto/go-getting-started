@@ -4,7 +4,12 @@ build:
     context: .
 
 deploy:
-  - kubectl apply -f k8s.yml
+  - name: deploy env
+    command: kubectl apply -f k8s.yml
+  - name: Set randomly password
+    command: echo "OKTETO_RANDOM_PASS=P@sSvV0rD" >> $OKTETO_ENV
+  - name: Set another randomly password
+    command: echo "OKTETO_RANDOM2_PASS=P@sSvV0rD333" >> $OKTETO_ENV
 
 dev:
   hello-world:
@@ -21,7 +26,7 @@ dev:
           - SYS_PTRACE
     forward:
       - 2345:2345
-      
+
 external:
   db:
     notes: docs/database.md
