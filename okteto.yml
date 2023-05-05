@@ -4,6 +4,7 @@ build:
     context: .
 
 deploy:
+  - echo "MY_DYNAMIC_APP_ENV=hello world!" >> $OKTETO_ENV
   - kubectl apply -f k8s.yml
 
 dev:
