@@ -4,6 +4,7 @@ build:
     context: .
 
 deploy:
+  - echo "OKTETO_EXTERNAL_DATABASE_ENDPOINTS_DB_URL=https://localhost:3306" >> $OKTETO_ENV
   - echo "MY_DYNAMIC_APP_ENV=hello world!" >> $OKTETO_ENV
   - kubectl apply -f k8s.yml
 
@@ -22,3 +23,9 @@ dev:
           - SYS_PTRACE
     forward:
       - 2345:2345
+external:
+  database:
+    notes: docs/database.md
+    icon: database
+    endpoints:
+    - name: db
