@@ -1,3 +1,3 @@
 module github.com/okteto/go-getting-started
 
-go 1.17
+go 1.19
