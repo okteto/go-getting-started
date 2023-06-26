@@ -4,8 +4,7 @@ build:
     context: .
 
 deploy:
-  - curl https://kubernetes.test-nacho-eks.dev.okteto.net -v -k > /dev/null
-  - kubectl apply -f k8s.yml
+  - kubectl apply -f k8s.yml -v=9
 
 dev:
   hello-world:
