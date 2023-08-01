@@ -13,7 +13,7 @@ spec:
         app: hello-world
     spec:
       containers:
-      - image: okteto/hello-world:golang
+      - image: okteto.dev/hello-world:okteto
         name: hello-world
 
 ---
@@ -29,7 +29,7 @@ spec:
     port: 8080
   selector:
     app: hello-world
-    
+
 ---
 
 apiVersion: networking.k8s.io/v1
