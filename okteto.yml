@@ -3,6 +3,7 @@ build:
     context: .
 
 deploy:
+  - echo ${OKTETO_BUILD_HELLO_WORLD_IMAGE}
   - kubectl apply -f k8s.yml
 
 dev:
