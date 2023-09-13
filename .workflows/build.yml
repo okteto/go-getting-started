@@ -1,0 +1,16 @@
+# File: .github/workflows/workflow.yml
+on: [push]
+
+name: build
+
+jobs:
+  devflow:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: okteto/context@latest
+        with:
+          url: ${{ secrets.OKTETO_URL }}
+          token: ${{ secrets.OKTETO_TOKEN }}
+
+      - name: "Build"
+        uses: okteto/build@latest
