@@ -13,4 +13,4 @@ jobs:
           token: ${{ secrets.OKTETO_TOKEN }}
 
       - name: "Build"
-        uses: okteto/build@latest
+        uses: okteto/build@tere/fix-shell-sintax
