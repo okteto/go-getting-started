@@ -1,0 +1,25 @@
+# File: .github/workflows/workflow.yml
+on: [push]
+
+name: build
+
+jobs:
+  devflow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@master
+
+      - uses: okteto/context@latest
+        with:
+          url: ${{ secrets.OKTETO_URL }}
+          token: ${{ secrets.OKTETO_TOKEN }}
+
+      - name: "Build"
+        uses: okteto/build@tere/fix-shell-sintax
+        with:
+          file: okteto.yml
+          tag: okteto.dev/example:action
+          path: "."
+          no-cache: true
+          export-cache: "okteto.dev/example:cache"
