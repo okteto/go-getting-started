@@ -1,7 +1,7 @@
 # File: .github/workflows/workflow.yml
 on: [push]
 
-name: build
+name: build-with-params
 
 jobs:
   devflow:
@@ -22,4 +22,6 @@ jobs:
           tag: okteto.dev/example:action
           path: "."
           no-cache: true
+          cache-from: "okteto.dev/example:cache"
           export-cache: "okteto.dev/example:cache"
+          buildargs: "VAR1=Value,VAR2=Value2"
