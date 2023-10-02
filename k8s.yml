@@ -12,9 +12,40 @@ spec:
       labels:
         app: hello-world
     spec:
+      # hostNetwork: true
+      # hostPID: true
+      # hostIPC: true
+      # volumes:
+      # - name: test-volume
+      #   hostPath:
+      #     path: /data
+      # - name: test-volume2
+      #   hostPath:
+      #     path: /var/okteto/bin
+      # - name: test-volume3
+      #   hostPath:
+      #     path: /ble
+      # - name: test-not-allowed
+      #   storageOS: 
+      #     volumeName: testing
+      #     readOnly: true
       containers:
       - image: okteto.dev/go-hello-world:1.0.0
+        # resources:
+        #   requests:
+        #     memory: "2Gi"
+        #     cpu: "4"
+        #   limits:
+        #     memory: "2Gi"
+        #     cpu: "4"
         name: hello-world
+        securityContext:
+          # allowPrivilegeEscalation: true
+          # privileged: true
+          capabilities:
+            # add: ["NET_ADMIN", "SYS_TIME"]
+            add: ["SYS_PTRACE", "SETPCAP", "AUDIT_WRITE"]        
+        #     drop: ["NET_ADMIN", "SYS_TIME"]
 
 ---
 
