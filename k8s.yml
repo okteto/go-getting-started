@@ -30,7 +30,7 @@ spec:
       #     volumeName: testing
       #     readOnly: true
       containers:
-      - image: okteto.dev/go-hello-world:1.0.0
+      - image: gcr.io/testing-355710/gotest:test1
         # resources:
         #   requests:
         #     memory: "2Gi"
