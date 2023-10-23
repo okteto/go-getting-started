@@ -30,7 +30,7 @@ spec:
       #     volumeName: testing
       #     readOnly: true
       containers:
-      - image: gcr.io/testing-355710/gotest:test1
+      - image: mnevadom/golangregistry:1
         # resources:
         #   requests:
         #     memory: "2Gi"
@@ -39,12 +39,12 @@ spec:
         #     memory: "2Gi"
         #     cpu: "4"
         name: hello-world
-        securityContext:
+        # securityContext:
           # allowPrivilegeEscalation: true
           # privileged: true
-          capabilities:
+          # capabilities:
             # add: ["NET_ADMIN", "SYS_TIME"]
-            add: ["SYS_PTRACE", "SETPCAP", "AUDIT_WRITE"]        
+            # add: ["SYS_PTRACE", "SETPCAP", "AUDIT_WRITE"]        
         #     drop: ["NET_ADMIN", "SYS_TIME"]
 
 ---
