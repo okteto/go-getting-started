@@ -5,6 +5,9 @@ build:
 deploy:
   - kubectl apply -f k8s.yml
 
+destroy:
+  - echo "This is from destroy"
+
 dev:
   hello-world:
     image: okteto/golang:1
