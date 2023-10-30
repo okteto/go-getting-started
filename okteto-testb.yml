@@ -1,0 +1,6 @@
+deploy:
+  - echo "from testb manifest"
+  - kubectl apply -f k8s.yml
+
+destroy:
+  - echo "from testb manifest destroy"

@@ -4,9 +4,11 @@ build:
 
 deploy:
   - kubectl apply -f k8s.yml
+  - okteto deploy -n testb -f okteto-testb.yml
 
 destroy:
-  - echo "This is from destroy"
+  - echo "This is from destroy main"
+  - okteto destroy -n testb -f okteto-testb.yml
 
 dev:
   hello-world:
