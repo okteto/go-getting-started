@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"os"
 )
 
 func main() {
@@ -14,5 +15,5 @@ func main() {
 }
 
 func helloServer(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, "Hello world!")
+	fmt.Fprintf(w, "Hello world from %s!", os.Getenv("OKTETO_NAMESPACE"))
 }
