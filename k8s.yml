@@ -26,7 +26,7 @@ spec:
   type: ClusterIP
   ports:
   - name: "hello-world"
-    port: 8080
+    port: 8443
   selector:
     app: hello-world
 
@@ -38,6 +38,7 @@ metadata:
   name: hello-world
   annotations:
     dev.okteto.com/generate-host: hello-world
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
 spec:
   rules:
   - http:
@@ -46,6 +47,6 @@ spec:
           service:
             name: hello-world
             port:
-              number: 8080
+              number: 8443
         path: /
         pathType: ImplementationSpecific

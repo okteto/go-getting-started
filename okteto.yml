@@ -16,3 +16,4 @@ dev:
           - SYS_PTRACE
     forward:
       - 2345:2345
+      - 8443:8443
