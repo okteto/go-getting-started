@@ -4,6 +4,7 @@ build:
 
 deploy:
   - cat /etc/hosts
+  - cat /root/.docker/config.json
   - kubectl apply -f k8s.yml
 
 dev:
