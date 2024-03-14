@@ -3,9 +3,10 @@ build:
     context: .
 
 deploy:
-  - cat /etc/hosts
-  - cat /root/.docker/config.json
-  - kubectl apply -f k8s.yml
+  remote: false
+  commands:
+    - echo $OKTETO_CURRENT_DEPLOY_BELONGS_TO_PREVIEW
+    - kubectl apply -f k8s.yml
 
 dev:
   hello-world:
