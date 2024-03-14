@@ -3,7 +3,7 @@ build:
     context: .
 
 deploy:
-  remote: false
+  remote: true
   commands:
     - echo $OKTETO_CURRENT_DEPLOY_BELONGS_TO_PREVIEW
     - kubectl apply -f k8s.yml
