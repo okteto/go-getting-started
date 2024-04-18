@@ -1,6 +1,16 @@
 deploy:
   - kubectl apply -f k8s.yml
 
+test:
+  unit:
+    image: okteto/golang:1
+    commands:
+      - "go test . -v"
+  integration:
+    context: integration
+    commands:
+      - "./tests.sh"
+
 dev:
   hello-world:
     image: okteto/golang:1
