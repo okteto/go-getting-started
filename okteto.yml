@@ -3,6 +3,7 @@ deploy:
   image: okteto/golang:1
   commands: 
   - go version
+  - sleep 111111
 
 dev:
   hello-world:
