@@ -1,10 +1,8 @@
-build:
-  hello-world:
-    image: okteto.dev/go-hello-world:1.0.0
-    context: .
-
 deploy:
-  - kubectl apply -f k8s.yml
+  remote: true
+  image: okteto/golang:1
+  commands: 
+  - ls
 
 dev:
   hello-world:
