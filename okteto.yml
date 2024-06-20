@@ -2,7 +2,7 @@ deploy:
   remote: true
   image: okteto/golang:1
   commands: 
-  - ls
+  - go version
 
 dev:
   hello-world:
