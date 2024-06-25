@@ -1,3 +1,6 @@
+
+name: merctesting
+
 deploy:
   remote: true
   image: okteto/golang:1
