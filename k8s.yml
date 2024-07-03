@@ -5,6 +5,7 @@ metadata:
   annotations:
     dev.okteto.com/pre-sleep: "kubectl get pods"
     dev.okteto.com/post-wake: "kubectl get all"
+    dev.okteto.com/pre-wake: "kubectl get secret"
 spec:
   replicas: 1
   selector:
