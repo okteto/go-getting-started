@@ -4,6 +4,7 @@ metadata:
   name: hello-world
   annotations:
     dev.okteto.com/pre-sleep: "kubectl get pods"
+    dev.okteto.com/post-sleep: "kubectl get deployment"
     dev.okteto.com/post-wake: "kubectl get all"
     dev.okteto.com/pre-wake: "kubectl get secret"
 spec:
