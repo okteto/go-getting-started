@@ -8,6 +8,12 @@ deploy:
     - echo $OKTETO_CURRENT_DEPLOY_BELONGS_TO_PREVIEW
     - kubectl apply -f k8s.yml
 
+destroy:
+  remote: true
+  commands:
+    - echo "destroying...."
+    - kubectl get deployment
+    - sleep 5s
 dev:
   hello-world:
     image: okteto/golang:1
