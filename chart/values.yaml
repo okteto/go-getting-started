@@ -1,0 +1,8 @@
+
+
+replicaCount: 1
+
+image: okteto/go-getting-started
+
+
+
