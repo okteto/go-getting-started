@@ -1,6 +1,10 @@
 deploy:
   - kubectl apply -f k8s.yml
 
+destroy:
+  - sleep 180
+  - kubectl delete -f k8s.yml
+
 dev:
   hello-world:
     image: okteto/golang:1
