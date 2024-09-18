@@ -2,6 +2,9 @@ deploy:
   - kubectl apply -f k8s.yml
   - env
 
+destroy:
+  - env
+
 dev:
   hello-world:
     image: okteto/golang:1
