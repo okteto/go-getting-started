@@ -1,5 +1,6 @@
 deploy:
   - kubectl apply -f k8s.yml
+  - env
 
 dev:
   hello-world:
