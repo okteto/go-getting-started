@@ -1,6 +1,6 @@
 build:
   hello-world:
-    image: okteto.dev/go-hello-world:1.0.0
+    # image: okteto.dev/go-hello-world:1.0.0
     context: .
 
 deploy:
