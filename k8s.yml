@@ -13,7 +13,7 @@ spec:
         app: hello-world
     spec:
       containers:
-      - image: okteto.dev/go-hello-world:okteto
+      - image: okteto.dev/go-getting-started-hello-world:okteto
         name: hello-world
 
 ---
