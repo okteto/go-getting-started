@@ -1,11 +1,14 @@
-build:
-  hello-world:
-    context: .
+dependencies:
+  juno-local:
+    repository: https://github.com/ifbyol/movies
+    manifest: okteto.yml
+    branch: ifbyol/sleep
+    wait: true
+    timeout: 5m
 
 deploy:
   remote: true
   commands:
-    - echo $OKTETO_CURRENT_DEPLOY_BELONGS_TO_PREVIEW
     - kubectl apply -f k8s.yml
 
 destroy:
@@ -13,7 +16,6 @@ destroy:
   commands:
     - echo "destroying...."
     - kubectl get deployment
-    - sleep 5s
 dev:
   hello-world:
     image: okteto/golang:1
