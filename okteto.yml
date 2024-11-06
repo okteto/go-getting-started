@@ -1,8 +1,8 @@
 dependencies:
   juno-local:
-    repository: https://github.com/ifbyol/movies
-    manifest: okteto.yml
-    branch: ifbyol/sleep
+    repository: https://github.com/ifbyol/test-okteto
+    manifest: okteto.yaml
+    branch: ifbyol/test-delayed-start
     wait: true
     timeout: 5m
 
