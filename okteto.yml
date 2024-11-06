@@ -1,3 +1,7 @@
+build:
+  hello-world:
+    context: .
+
 dependencies:
   juno-local:
     repository: https://github.com/ifbyol/test-okteto
