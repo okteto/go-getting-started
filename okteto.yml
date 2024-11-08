@@ -13,6 +13,7 @@ dependencies:
 deploy:
   remote: true
   commands:
+    - okteto version
     - kubectl apply -f k8s.yml
 
 destroy:
