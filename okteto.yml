@@ -1,14 +1,14 @@
-build:
-  hello-world:
-    context: .
+#build:
+#  hello-world:
+#    context: .
 
-dependencies:
-  juno-local:
-    repository: https://github.com/ifbyol/test-okteto
-    manifest: okteto.yaml
-    branch: ifbyol/test-delayed-start
-    wait: true
-    timeout: 5m
+#dependencies:
+#  juno-local:
+#    repository: https://github.com/ifbyol/test-okteto
+#    manifest: okteto.yaml
+#    branch: ifbyol/test-delayed-start
+#    wait: true
+#    timeout: 5m
 
 deploy:
   remote: true
