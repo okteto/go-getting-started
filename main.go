@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"net/http"
+
+	"github.com/common-nighthawk/go-figure"
 )
 
 func main() {
@@ -14,5 +16,6 @@ func main() {
 }
 
 func helloServer(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, "Hello world!")
+	ascii := figure.NewFigure("Welcome to Civo Navigate SF", "", true)
+	fmt.Fprint(w, ascii.String())
 }
