@@ -12,13 +12,17 @@ spec:
       labels:
         app: hello-world
     spec:
+      initContainers:
+      - name: "init"
+        image: busybox
+        command: ["ping", "apple.com", "-c", "20"]
       containers:
-      - name: container-1
+      - name: "11111111111111111111"
         image: busybox
-        command: ["ping", "microsoft.com", "-c", "20"]
-      - name: container-2
+        command: ["ping", "microsoft.com"]
+      - name: "22222222222222222222"
         image: busybox
-        command: ["ping", "google.com", "-c", "20"]
+        command: ["ping", "google.com"]
 
 ---
 
