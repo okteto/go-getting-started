@@ -13,8 +13,12 @@ spec:
         app: hello-world
     spec:
       containers:
-      - image: okteto/go-getting-started:hello-world
-        name: hello-world
+      - name: container-1
+        image: busybox
+        command: ["ping", "microsoft.com", "-c", "20"]
+      - name: container-2
+        image: busybox
+        command: ["ping", "google.com", "-c", "20"]
 
 ---
 
