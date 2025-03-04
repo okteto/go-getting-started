@@ -1,0 +1,11 @@
+# Ignore all files
+*
+
+[deploy]
+!k8s.yml
+
+[test]
+!go.mod
+!go.sum
+!main.go
+!main_test.go

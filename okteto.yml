@@ -1,5 +1,12 @@
+build:
+  hello-world:
+    context: .
+    dockerfile: Dockerfile
+
 deploy:
   - kubectl apply -f k8s.yml
+  - kubectl set image deployment/hello-world hello-world=${OKTETO_BUILD_HELLO_WORLD_IMAGE}
+  - kubectl rollout status deployment/hello-world
 
 dev:
   hello-world:
@@ -10,9 +17,9 @@ dev:
     volumes:
       - /go
       - /root/.cache
-    securityContext:
-      capabilities:
-        add:
-          - SYS_PTRACE
-    forward:
-      - 2345:2345
+  
+test:
+  hello-world:
+    image: golang:1.23
+    commands:
+      - go test -v

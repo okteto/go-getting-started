@@ -1,4 +1,4 @@
-FROM golang:buster
+FROM golang:1.23
 
 WORKDIR /app
 ADD . .
