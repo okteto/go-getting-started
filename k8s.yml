@@ -3,7 +3,12 @@ kind: Deployment
 metadata:
   name: hello-world
 spec:
-  replicas: 1
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
   selector:
     matchLabels:
       app: hello-world
@@ -13,8 +18,19 @@ spec:
         app: hello-world
     spec:
       containers:
-      - image: okteto/go-getting-started:hello-world
+      - image: $OKTETO_BUILD_HELLO_WORLD_IMAGE
         name: hello-world
+        ports:
+        - containerPort: 8080
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 10
+          timeoutSeconds: 2
+          successThreshold: 1
+          failureThreshold: 3
 
 ---
 
