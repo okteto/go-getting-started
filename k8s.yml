@@ -18,7 +18,7 @@ spec:
         app: hello-world
     spec:
       containers:
-      - image: okteto.dev/go-getting-started-hello-world:okteto
+      - image: okteto/go-getting-started:hello-world
         name: hello-world
         imagePullPolicy: Always
 
