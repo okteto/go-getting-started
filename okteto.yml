@@ -1,5 +1,19 @@
+build:
+  hello-world:
+    context: .
+    dockerfile: Dockerfile
+  test:
+    context: .
+    dockerfile: Dockerfile.test
+
 deploy:
-  - kubectl apply -f k8s.yml
+  - envsubst < k8s.yml | kubectl apply -f -
+
+test:
+  unit:
+    image: ${OKTETO_BUILD_TEST_IMAGE}
+    commands:
+      - go test -v ./...
 
 dev:
   hello-world:
