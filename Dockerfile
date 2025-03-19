@@ -1,4 +1,4 @@
-FROM golang:buster
+FROM golang:1.21-bullseye
 
 WORKDIR /app
 ADD . .
