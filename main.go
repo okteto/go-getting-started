@@ -1,18 +1,18 @@
 package main
 
 import (
-	"fmt"
-	"net/http"
+        "fmt"
+        "net/http"
 )
 
 func main() {
-	fmt.Println("Starting hello-world server...")
-	http.HandleFunc("/", helloServer)
-	if err := http.ListenAndServe(":8080", nil); err != nil {
-		panic(err)
-	}
+        fmt.Println("Starting hello-world server...")
+        http.HandleFunc("/", helloServer)
+        if err := http.ListenAndServe(":8080", nil); err != nil {
+                panic(err)
+        }
 }
 
 func helloServer(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, "Hello world!")
+        fmt.Fprint(w, "Welcome to our Cloud Native application! This is a nice message from Okteto. Have a wonderful day!")
 }
