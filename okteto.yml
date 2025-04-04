@@ -1,5 +1,10 @@
+build:
+  hello-world:
+    context: .
+    dockerfile: Dockerfile
+
 deploy:
-  - kubectl apply -f k8s.yml
+  - envsubst < k8s.yml | kubectl apply -f -
 
 dev:
   hello-world:
