@@ -1,7 +1,7 @@
 FROM golang:buster
 
 WORKDIR /app
-ADD . .
+COPY . .
 RUN go build -o /usr/local/bin/hello-world
 
 EXPOSE 8080
