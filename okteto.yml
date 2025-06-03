@@ -16,3 +16,23 @@ dev:
           - SYS_PTRACE
     forward:
       - 2345:2345
+
+test:
+  unit:
+    image: okteto/golang:1
+    caches:
+      - /go
+      - /root/.cache
+    commands:
+      - go test -v ./...
+  coverage:
+    image: okteto/golang:1
+    artifacts:
+      - coverage.out
+      - coverage.html
+    caches:
+      - /go
+      - /root/.cache
+    commands:
+      - go test -v -coverprofile=coverage.out ./...
+      - go tool cover -html=coverage.out -o coverage.html
