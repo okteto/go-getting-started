@@ -14,5 +14,5 @@ func main() {
 }
 
 func helloServer(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, "Hello world!")
+	fmt.Fprint(w, "🚀 Deployed with Okteto - Cloud Native Development Made Easy! ☁️")
 }
