@@ -13,7 +13,7 @@ spec:
         app: hello-world
     spec:
       containers:
-      - image: okteto/go-getting-started:hello-world
+      - image: registry.pchico83.dev.okteto.net/agent-hcf5d8p50a45/go-getting-started-hello-world:okteto
         name: hello-world
 
 ---
