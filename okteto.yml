@@ -1,5 +1,9 @@
+build:
+  hello-world:
+    context: .
+
 deploy:
-  - kubectl apply -f k8s.yml
+  - sed "s|\${OKTETO_BUILD_HELLO_WORLD_IMAGE}|${OKTETO_BUILD_HELLO_WORLD_IMAGE}|g" k8s.yml | kubectl apply -f -
 
 dev:
   hello-world:
