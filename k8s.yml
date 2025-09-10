@@ -37,7 +37,8 @@ kind: Ingress
 metadata:
   name: hello-world
   annotations:
-    dev.okteto.com/generate-host: hello-world
+    dev.okteto.com/generate-host: "true"
+    dev.okteto.com/endpoints: "https://as.com/"
 spec:
   rules:
   - http:
