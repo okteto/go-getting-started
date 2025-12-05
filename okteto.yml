@@ -3,7 +3,7 @@ deploy:
 
 dev:
   hello-world:
-    image: okteto/golang:1
+    image: ghcr.io/okteto/golang:1
     command: bash
     sync:
       - .:/usr/src/app
