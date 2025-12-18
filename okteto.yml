@@ -2,7 +2,11 @@ deploy:
   - kubectl apply -f k8s.yml
 
 destroy:
-  - sleep 600
+  - echo sleeping 4 min
+  - sleep 240
+  - echo sleeping 4 min 2
+  - sleep 240
+  - echo done
 
 dev:
   hello-world:
