@@ -1,5 +1,6 @@
 deploy:
-  - kubectl apply -f k8s.yml
+  - okteto build -f Dockerfile -l=debug
+  - okteto deploy -f okteto-debug.yml -l=debug
 
 dev:
   hello-world:
