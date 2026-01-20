@@ -1,6 +1,7 @@
 deploy:
-  - okteto build -f Dockerfile -l=debug
-  - okteto deploy -f okteto-debug.yml -l=debug
+  - echo "helm" && helm version
+  - echo "helm3" && helm3 version
+  - echo "helm4" && helm4 version
 
 dev:
   hello-world:
