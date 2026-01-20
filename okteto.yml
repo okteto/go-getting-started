@@ -1,4 +1,5 @@
 deploy:
+  - which helm
   - echo "helm" && helm version
   - echo "helm3" && helm3 version
   - echo "helm4" && helm4 version
