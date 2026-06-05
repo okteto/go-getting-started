@@ -32,20 +32,18 @@ spec:
 
 ---
 
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
 metadata:
   name: hello-world
   annotations:
     dev.okteto.com/generate-host: hello-world
 spec:
   rules:
-  - http:
-      paths:
-      - backend:
-          service:
-            name: hello-world
-            port:
-              number: 8080
-        path: /
-        pathType: ImplementationSpecific
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /
+    backendRefs:
+    - name: hello-world
+      port: 8080
