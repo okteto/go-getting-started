@@ -1,5 +1,9 @@
 deploy:
   - kubectl apply -f k8s.yml
+destroy:
+  - echo "Destroying..."
+  - exit 1
+  - echo "Destroyed!
 
 dev:
   hello-world:
