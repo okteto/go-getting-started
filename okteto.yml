@@ -16,3 +16,19 @@ dev:
           - SYS_PTRACE
     forward:
       - 2345:2345
+
+test:
+  unit:
+    image: ghcr.io/okteto/golang:1
+    caches:
+      - /go
+      - /root/.cache
+    commands:
+      - go vet ./...
+      - go test -v ./...
+  e2e:
+    depends_on:
+      - unit
+    image: ghcr.io/okteto/golang:1
+    commands:
+      - curl -fsS --retry 5 --retry-connrefused http://hello-world.${OKTETO_NAMESPACE}:8080/ | grep -q "Hello world!"
