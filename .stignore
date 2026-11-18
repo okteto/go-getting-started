@@ -1,4 +1,4 @@
 .git
 
 # dlv binary
-__debug_bin
+__debug_bin*
