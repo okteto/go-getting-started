@@ -1,0 +1,7 @@
+# Send only what "go build" needs to the build context.
+# Anything else (.git, manifests, docs) would bloat the images and
+# invalidate the build cache on every unrelated change.
+*
+!go.mod
+!go.sum
+!**/*.go

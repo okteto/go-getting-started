@@ -1,0 +1,17 @@
+# Files that the Okteto CLI sends to Remote Execution.
+
+# "okteto deploy" and "okteto destroy" only need the Helm chart
+[deploy]
+*
+!chart
+
+[destroy]
+*
+!chart
+
+# "okteto test" only needs what "go test" reads
+[test]
+*
+!go.mod
+!go.sum
+!**/*.go
