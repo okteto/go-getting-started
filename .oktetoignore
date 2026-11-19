@@ -1,13 +1,13 @@
 # Files that the Okteto CLI sends to Remote Execution.
 
-# "okteto deploy" and "okteto destroy" only need the Kubernetes manifests
+# "okteto deploy" and "okteto destroy" only need the Helm chart
 [deploy]
 *
-!k8s.yml
+!chart
 
 [destroy]
 *
-!k8s.yml
+!chart
 
 # "okteto test" only needs what "go test" reads
 [test]

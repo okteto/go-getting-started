@@ -9,7 +9,9 @@ build:
       - dev
 
 deploy:
-  - envsubst < k8s.yml | kubectl apply -f -
+  image: alpine/helm:4.3.2
+  commands:
+    - helm upgrade --install hello-world chart --set image=${OKTETO_BUILD_HELLO_WORLD_IMAGE}
 
 test:
   unit:
