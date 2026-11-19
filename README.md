@@ -1,5 +1,5 @@
-# Getting Started on Okteto with Go
+# Getting Started with Okteto and Go
 
-This example shows how to use the [Okteto CLI](https://github.com/okteto/okteto) to develop a Go Sample App directly in Kubernetes. The Go Sample App is deployed using Kubernetes manifests.
+This sample shows how to build, deploy, test, and develop a Go application on Kubernetes with [Okteto](https://www.okteto.com). Okteto builds its application and development images from the `Dockerfile`, runs its unit tests in a Test Container, and replaces it with a Development Container that has hot reload and a debugger.
 
-This is the application used for the [Getting Started on Okteto with Go](https://www.okteto.com/docs/samples/golang/) tutorial.
+Follow the [Getting Started with Okteto and Go](https://www.okteto.com/docs/development/containers/golang/) guide.
