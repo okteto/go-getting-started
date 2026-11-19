@@ -1,4 +1,15 @@
+# Files that "okteto up" does not synchronize with the development container.
+
+# Git metadata: large, and only needed on your machine
 .git
 
-# dlv binary
+# Binaries generated inside the development container
+/tmp
+/go-getting-started
 __debug_bin*
+*.test
+*.out
+
+# Local-only files
+.vscode
+.DS_Store

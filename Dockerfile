@@ -1,8 +1,13 @@
-FROM golang:1.26
+FROM golang:1.26.5-bookworm AS dev
 
-WORKDIR /app
-ADD . .
+RUN GOBIN=/usr/local/bin go install github.com/air-verse/air@v1.67.4 && \
+    GOBIN=/usr/local/bin go install github.com/go-delve/delve/cmd/dlv@v1.27.1
+
+WORKDIR /usr/src/app
+COPY . .
 RUN go build -o /usr/local/bin/hello-world
 
-EXPOSE 8080
+FROM debian:bookworm-slim AS prod
+
+COPY --from=dev /usr/local/bin/hello-world /usr/local/bin/hello-world
 CMD ["/usr/local/bin/hello-world"]

@@ -1,0 +1,5 @@
+# Files sent to the Okteto remote runner for "okteto deploy" and "okteto destroy".
+# Images are built from the build context (see .dockerignore), so the
+# deploy commands only need the Kubernetes manifests.
+*
+!k8s.yml

@@ -1,15 +1,24 @@
+build:
+  dev:
+    context: .
+    target: dev
+  hello-world:
+    context: .
+    target: prod
+    depends_on:
+      - dev
+
 deploy:
-  - kubectl apply -f k8s.yml
+  - envsubst < k8s.yml | kubectl apply -f -
 
 dev:
   hello-world:
-    image: ghcr.io/okteto/golang:1
-    command: bash
+    image: ${OKTETO_BUILD_DEV_IMAGE}
+    command: air
     sync:
       - .:/usr/src/app
-    volumes:
-      - /go
-      - /root/.cache
+    persistentVolume:
+      enabled: false
     securityContext:
       capabilities:
         add:
