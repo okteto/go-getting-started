@@ -78,8 +78,11 @@
         margin: 22px 0 0;
         padding-top: 16px;
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
+        /* The two credits are centered as a group, and each label is aligned with its value */
+        grid-template-columns: auto auto;
+        justify-content: center;
+        gap: 12px 44px;
+        text-align: left;
         border-top: 1px solid rgba(255, 255, 255, 0.18);
       }
       .credits dd { margin: 6px 0 0; font-size: 13px; font-weight: 600; overflow-wrap: anywhere; }
