@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hello World</title>
+    <!-- The icon of the browser tab: the Okteto logo -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22 fill=%22none%22%3E%3Cpath d=%22M16 32C24.8368 32 32 24.8368 32 16C32 7.1632 24.8368 0 16 0C7.1632 0 0 7.1632 0 16C0 24.8368 7.1632 32 16 32Z%22 fill=%22%2300D1CA%22/%3E%3Cpath d=%22M10.4331 16.0002C10.4331 12.953 12.9507 10.4346 16.1171 10.4346C16.9698 10.4314 17.8125 10.6192 18.5833 10.9841C19.3541 11.349 20.0334 11.8818 20.5715 12.5434C20.7191 12.7268 20.9014 12.8793 21.1081 12.9921C21.3148 13.1049 21.5417 13.1757 21.7758 13.2006C22.0099 13.2256 22.2467 13.204 22.4724 13.1372C22.6982 13.0705 22.9086 12.9598 23.0915 12.8115C23.2744 12.6632 23.4262 12.4803 23.5383 12.2733C23.6503 12.0662 23.7204 11.8391 23.7445 11.6048C23.7686 11.3706 23.7462 11.134 23.6786 10.9084C23.611 10.6829 23.4996 10.4729 23.3507 10.2906C22.4772 9.21517 21.3743 8.34871 20.1227 7.75462C18.8711 7.16052 17.5025 6.85382 16.1171 6.85696C11.0291 6.85696 6.85547 10.9242 6.85547 16.0002C6.85547 21.0762 11.0291 25.1426 16.1171 25.1426C19.0387 25.1426 21.6531 23.8042 23.3507 21.7098C23.6495 21.3412 23.7897 20.869 23.7404 20.3971C23.6911 19.9252 23.4564 19.4922 23.0879 19.1934C22.7193 18.8945 22.2472 18.7543 21.7752 18.8036C21.3033 18.8529 20.8703 19.0876 20.5715 19.4562C20.0334 20.1178 19.3541 20.6505 18.5833 21.0154C17.8125 21.3803 16.9698 21.5681 16.1171 21.565C12.9507 21.565 10.4331 19.0466 10.4331 16.0002Z%22 fill=%22%231A263E%22/%3E%3Cpath d=%22M23.3552 17.7888C23.8296 17.7888 24.2846 17.6003 24.6201 17.2649C24.9555 16.9294 25.144 16.4744 25.144 16C25.144 15.5256 24.9555 15.0706 24.6201 14.7351C24.2846 14.3996 23.8296 14.2112 23.3552 14.2112C22.8808 14.2112 22.4258 14.3996 22.0903 14.7351C21.7549 15.0706 21.5664 15.5256 21.5664 16C21.5664 16.4744 21.7549 16.9294 22.0903 17.2649C22.4258 17.6003 22.8808 17.7888 23.3552 17.7888Z%22 fill=%22%231A263E%22/%3E%3C/svg%3E" />
+    <style>
+      :root {
+        /* The color of the language: Go */
+        --accent: #00add8;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        color: #f4f6fb;
+        background: radial-gradient(circle at 50% 30%, #1d2638 0%, #0a0d14 70%);
+        font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+      }
+      .card {
+        position: relative;
+        width: min(420px, 100%);
+        padding: 36px 32px 32px;
+        overflow: hidden;
+        text-align: center;
+        border-radius: 6px;
+        background: linear-gradient(165deg, #121a2e 0%, #0b1020 55%, var(--accent) 180%);
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.08);
+      }
+      .hello {
+        margin: 0 0 30px;
+        font-size: 30px;
+        line-height: 1.1;
+        font-weight: 800;
+      }
+      .logo {
+        display: block;
+        width: 46%;
+        height: auto;
+        margin: 0 auto;
+        filter: drop-shadow(0 0 26px #00d1ca);
+      }
+      h1 {
+        margin: 36px 0 0;
+        font-size: 22px;
+        line-height: 1.3;
+        font-weight: 700;
+      }
+      .details {
+        margin: 28px 0 0;
+        padding-top: 18px;
+        display: grid;
+        /* The two details are centered as a group, and each label is aligned with its value */
+        grid-template-columns: auto auto;
+        justify-content: center;
+        gap: 12px 44px;
+        text-align: left;
+        border-top: 1px solid rgba(255, 255, 255, 0.18);
+      }
+      .details dt {
+        font-size: 11px;
+        letter-spacing: 0.32em;
+        text-transform: uppercase;
+        color: #9aa7c2;
+      }
+      .details dd { margin: 6px 0 0; font-size: 13px; font-weight: 600; overflow-wrap: anywhere; }
+    </style>
+  </head>
+  <body>
+    <main class="card">
+      <p class="hello">Hello World</p>
+      <svg class="logo" viewBox="0 0 32 32" fill="none" role="img" aria-label="Okteto">
+        <path d="M16 32C24.8368 32 32 24.8368 32 16C32 7.1632 24.8368 0 16 0C7.1632 0 0 7.1632 0 16C0 24.8368 7.1632 32 16 32Z" fill="#00D1CA"/>
+        <path d="M10.4331 16.0002C10.4331 12.953 12.9507 10.4346 16.1171 10.4346C16.9698 10.4314 17.8125 10.6192 18.5833 10.9841C19.3541 11.349 20.0334 11.8818 20.5715 12.5434C20.7191 12.7268 20.9014 12.8793 21.1081 12.9921C21.3148 13.1049 21.5417 13.1757 21.7758 13.2006C22.0099 13.2256 22.2467 13.204 22.4724 13.1372C22.6982 13.0705 22.9086 12.9598 23.0915 12.8115C23.2744 12.6632 23.4262 12.4803 23.5383 12.2733C23.6503 12.0662 23.7204 11.8391 23.7445 11.6048C23.7686 11.3706 23.7462 11.134 23.6786 10.9084C23.611 10.6829 23.4996 10.4729 23.3507 10.2906C22.4772 9.21517 21.3743 8.34871 20.1227 7.75462C18.8711 7.16052 17.5025 6.85382 16.1171 6.85696C11.0291 6.85696 6.85547 10.9242 6.85547 16.0002C6.85547 21.0762 11.0291 25.1426 16.1171 25.1426C19.0387 25.1426 21.6531 23.8042 23.3507 21.7098C23.6495 21.3412 23.7897 20.869 23.7404 20.3971C23.6911 19.9252 23.4564 19.4922 23.0879 19.1934C22.7193 18.8945 22.2472 18.7543 21.7752 18.8036C21.3033 18.8529 20.8703 19.0876 20.5715 19.4562C20.0334 20.1178 19.3541 20.6505 18.5833 21.0154C17.8125 21.3803 16.9698 21.5681 16.1171 21.565C12.9507 21.565 10.4331 19.0466 10.4331 16.0002Z" fill="#1A263E"/>
+        <path d="M23.3552 17.7888C23.8296 17.7888 24.2846 17.6003 24.6201 17.2649C24.9555 16.9294 25.144 16.4744 25.144 16C25.144 15.5256 24.9555 15.0706 24.6201 14.7351C24.2846 14.3996 23.8296 14.2112 23.3552 14.2112C22.8808 14.2112 22.4258 14.3996 22.0903 14.7351C21.7549 15.0706 21.5664 15.5256 21.5664 16C21.5664 16.4744 21.7549 16.9294 22.0903 17.2649C22.4258 17.6003 22.8808 17.7888 23.3552 17.7888Z" fill="#1A263E"/>
+      </svg>
+      <h1 id="message">&nbsp;</h1>
+      <dl class="details">
+        <div><dt>Runtime</dt><dd id="runtime">&nbsp;</dd></div>
+        <div><dt>Pod</dt><dd id="pod">&nbsp;</dd></div>
+      </dl>
+    </main>
+    <script>
+      // The page asks the service for its info every second, so a change in
+      // the code shows up without reloading the page.
+      const show = (info) => {
+        for (const key of ["message", "runtime", "pod"]) {
+          document.getElementById(key).textContent = info[key];
+        }
+      };
+      const refresh = () => fetch("api/info").then((res) => res.json()).then(show).catch(() => {});
+      refresh();
+      setInterval(refresh, 1000);
+    </script>
+  </body>
+</html>

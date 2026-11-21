@@ -9,16 +9,11 @@ build:
       - dev
 
 deploy:
-  image: alpine/helm:4.3.2
-  commands:
-    - helm upgrade --install hello-world chart --set image=${OKTETO_BUILD_HELLO_WORLD_IMAGE}
+  - envsubst < k8s.yml | kubectl apply -f -
 
 test:
   unit:
     image: ${OKTETO_BUILD_DEV_IMAGE}
-    caches:
-      - /go/pkg/mod
-      - /root/.cache/go-build
     commands:
       - go test -v -coverprofile=coverage.out ./...
     artifacts:
