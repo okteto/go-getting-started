@@ -1,2 +1,0 @@
-# The image to deploy. okteto.yml sets it to the image that Okteto builds.
-image: ""
