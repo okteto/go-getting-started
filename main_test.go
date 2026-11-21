@@ -8,40 +8,37 @@ import (
 	"testing"
 )
 
-func TestNowShowing(t *testing.T) {
-	req := httptest.NewRequest(http.MethodGet, "/api/movie", nil)
+func TestHello(t *testing.T) {
+	req := httptest.NewRequest(http.MethodGet, "/api/info", nil)
 	rec := httptest.NewRecorder()
 
-	nowShowing(rec, req)
+	hello(rec, req)
 
 	if rec.Code != http.StatusOK {
 		t.Fatalf("status = %d, want %d", rec.Code, http.StatusOK)
 	}
-	var got movie
+	var got info
 	if err := json.NewDecoder(rec.Body).Decode(&got); err != nil {
 		t.Fatalf("invalid response: %v", err)
 	}
-	if got.Studio != studio {
-		t.Errorf("studio = %q, want %q", got.Studio, studio)
+	if got.Message != message {
+		t.Errorf("message = %q, want %q", got.Message, message)
 	}
-	if got.Title != title {
-		t.Errorf("title = %q, want %q", got.Title, title)
-	}
-	if !strings.HasPrefix(got.Starring, "Go ") {
-		t.Errorf("starring = %q, want the Go version", got.Starring)
+	if !strings.HasPrefix(got.Runtime, "Go ") {
+		t.Errorf("runtime = %q, want the Go version", got.Runtime)
 	}
 }
 
-func TestPoster(t *testing.T) {
+func TestPage(t *testing.T) {
 	req := httptest.NewRequest(http.MethodGet, "/", nil)
 	rec := httptest.NewRecorder()
 
-	poster(rec, req)
+	page(rec, req)
 
 	if rec.Code != http.StatusOK {
 		t.Errorf("status = %d, want %d", rec.Code, http.StatusOK)
 	}
-	if !strings.Contains(rec.Body.String(), `id="title"`) {
-		t.Error("the page doesn't contain the poster")
+	if !strings.Contains(rec.Body.String(), `id="message"`) {
+		t.Error("the page doesn't show the message")
 	}
 }
