@@ -14,6 +14,9 @@ deploy:
 test:
   unit:
     image: ${OKTETO_BUILD_DEV_IMAGE}
+    caches:
+      - /go/pkg/mod
+      - /root/.cache/go-build
     commands:
       - go test -v -coverprofile=coverage.out ./...
     artifacts:
