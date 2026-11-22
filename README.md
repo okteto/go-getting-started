@@ -6,4 +6,4 @@ This sample shows how to build, deploy, test, and develop a Go application on Ku
 
 Okteto builds its application and development images from the `Dockerfile`, deploys it with `kubectl`, runs its unit tests in the cluster, and replaces it with a Development Container that has hot reload and a debugger.
 
-Follow the [Getting Started with Okteto and Go](https://www.okteto.com/docs/development/containers/golang/) guide.
+Follow the [Okteto with Go](https://www.okteto.com/docs/development/containers/golang/) guide.
